@@ -16,8 +16,10 @@ public class EShopController {
     @RequestMapping(value = "/checkout")
     public String checkout(@RequestHeader HttpHeaders headers) {
         String result = "";
-        // Use HTTP GET for simplicity in this demo. In a real world use case,We should
-        // use HTTP POST instead.
+        // Use HTTP GET in this demo. In a real world use case,We should use HTTP POST
+        // instead.
+        // The three services are bundled in one jar for simplicity. To make it work,
+        // define three services in Kubernets.
         result += restTemplate.getForEntity("http://inventory:8080/createOrder", String.class).getBody();
         result += "<BR>";
         result += restTemplate.getForEntity("http://billing:8080/payment", String.class).getBody();
