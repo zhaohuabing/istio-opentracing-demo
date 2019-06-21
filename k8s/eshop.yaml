@@ -143,7 +143,7 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "eshop.zhaohuabing.com"
+    - "*"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -151,7 +151,7 @@ metadata:
   name: eshop
 spec:
   hosts:
-  - "eshop.zhaohuabing.com"
+  - "*"
   gateways:
   - eshop-gateway
   http:
