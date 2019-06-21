@@ -129,3 +129,37 @@ spec:
         image: zhaohuabing/istio-opentracing-demo:1.0
         ports:
         - containerPort: 8080
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: eshop-gateway
+spec:
+  selector:
+    istio: ingressgateway # use Istio default gateway implementation
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "eshop.zhaohuabing.com"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: eshop
+spec:
+  hosts:
+  - "eshop.zhaohuabing.com"
+  gateways:
+  - eshop-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /checkout
+    route:
+    - destination:
+        port:
+          number: 8080
+        host: eshop
