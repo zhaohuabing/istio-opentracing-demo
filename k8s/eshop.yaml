@@ -69,6 +69,13 @@ spec:
         image: zhaohuabing/istio-opentracing-demo:1.0
         ports:
         - containerPort: 8080
+        env:
+          - name: JAEGER_ENDPOINT
+            value: "http://jaeger-collector.istio-system:14268/api/traces"
+          - name: JAEGER_PROPAGATION
+            value: "b3"
+          - name: JAEGER_TRACEID_128BIT
+            value: "true"
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -88,7 +95,7 @@ spec:
       - name: inventory
         image: zhaohuabing/istio-opentracing-demo:1.0
         ports:
-        - containerPort: 8080        
+        - containerPort: 8080
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment

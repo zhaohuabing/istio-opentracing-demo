@@ -1,1 +1,2 @@
-docker build ./ -t zhaohuabing/istio-opentracing-demo:1.0
+mvn install
+sudo docker build ./ -t zhaohuabing/istio-opentracing-demo:1.0
