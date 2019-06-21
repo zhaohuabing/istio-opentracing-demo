@@ -16,39 +16,39 @@ kind: Service
 metadata:
   name: inventory
   labels:
-    app: eshop
+    app: inventory
 spec:
   ports:
   - port: 8080
     name: http
   selector:
-    app: eshop
+    app: inventory
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: billing
   labels:
-    app: eshop
+    app: billing
 spec:
   ports:
   - port: 8080
     name: http
   selector:
-    app: eshop
+    app: billing
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: delivery
   labels:
-    app: eshop
+    app: delivery
 spec:
   ports:
   - port: 8080
     name: http
   selector:
-    app: eshop
+    app: delivery
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -66,6 +66,66 @@ spec:
     spec:
       containers:
       - name: eshop
+        image: zhaohuabing/istio-opentracing-demo:1.0
+        ports:
+        - containerPort: 8080
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: inventory-v1
+  labels:
+    version: v1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: inventory
+        version: v1
+    spec:
+      containers:
+      - name: inventory
+        image: zhaohuabing/istio-opentracing-demo:1.0
+        ports:
+        - containerPort: 8080        
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: billing-v1
+  labels:
+    version: v1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: billing
+        version: v1
+    spec:
+      containers:
+      - name: billing
+        image: zhaohuabing/istio-opentracing-demo:1.0
+        ports:
+        - containerPort: 8080
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: delivery-v1
+  labels:
+    version: v1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: delivery
+        version: v1
+    spec:
+      containers:
+      - name: delivery
         image: zhaohuabing/istio-opentracing-demo:1.0
         ports:
         - containerPort: 8080
