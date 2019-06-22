@@ -2,9 +2,12 @@ package com.zhaohuabing.demo.service;
 
 import com.zhaohuabing.demo.instrument.Traced;
 
+import org.springframework.stereotype.Component;
+
 /**
  * Huabing Zhao
  */
+@Component
 public class BankTransaction {
     @Traced
     public void transfer() {
