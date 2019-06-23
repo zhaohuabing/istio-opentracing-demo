@@ -20,16 +20,6 @@ public class IstioOpentracingDemoApplication {
 		return restTemplateBuilder.build();
 	}
 
-	@Bean
-	public BankTransaction bankTransaction() {
-		return new BankTransaction();
-	}
-
-	@Bean
-	public DBAccess dbAccess() {
-		return new DBAccess();
-	}
-
 	public static void main(String[] args) {
 		SpringApplication.run(IstioOpentracingDemoApplication.class, args);
 	}

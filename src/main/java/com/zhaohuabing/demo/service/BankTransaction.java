@@ -1,8 +1,11 @@
 package com.zhaohuabing.demo.service;
 
+import org.springframework.stereotype.Component;
+
 /**
  * Huabing Zhao
  */
+@Component
 public class BankTransaction {
     public void transfer() {
         try {

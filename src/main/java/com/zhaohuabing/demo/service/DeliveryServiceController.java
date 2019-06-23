@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DeliveryServiceController {
 
     @RequestMapping(value = "/arrangeDelivery")
-    public String createOrder(@RequestHeader HttpHeaders headers) {
+    public String arrangeDelivery(@RequestHeader HttpHeaders headers) {
         try {
             Thread.sleep((long) (Math.random() * 100));
         } catch (InterruptedException e) {
