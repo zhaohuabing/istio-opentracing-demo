@@ -2,6 +2,7 @@ package com.zhaohuabing.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,9 @@ public class EShopController {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    private KafkaTemplate<String, String> kafkaTemplate;
+
     @RequestMapping(value = "/checkout")
     public String checkout(@RequestHeader HttpHeaders headers) {
         String result = "";
@@ -28,6 +32,8 @@ public class EShopController {
         result += restTemplate.getForEntity("http://billing:8080/payment", String.class).getBody();
         result += "<BR>";
         result += restTemplate.getForEntity("http://delivery:8080/arrangeDelivery", String.class).getBody();
+
+        kafkaTemplate.send(KafkaConfig.ESHOP_TOPIC, "send email confirmation");
         return result;
     }
 }
