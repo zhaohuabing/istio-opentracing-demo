@@ -14,7 +14,7 @@ public class DeliveryServiceController {
     @RequestMapping(value = "/arrangeDelivery")
     public String arrangeDelivery(@RequestHeader HttpHeaders headers) {
         try {
-            Thread.sleep((long) (Math.random() * 100));
+            Thread.sleep((long) (Math.random() * 10));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

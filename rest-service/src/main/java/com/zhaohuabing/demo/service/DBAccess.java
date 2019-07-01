@@ -13,7 +13,7 @@ public class DBAccess {
     @Traced
     public void save2db() {
         try {
-            Thread.sleep((long) (Math.random() * 100));
+            Thread.sleep((long) (Math.random() * 10));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

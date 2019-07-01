@@ -14,7 +14,7 @@ public class InventoryServiceController {
     @RequestMapping(value = "/createOrder")
     public String createOrder(@RequestHeader HttpHeaders headers) {
         try {
-            Thread.sleep((long) (Math.random() * 100));
+            Thread.sleep((long) (Math.random() * 10));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
