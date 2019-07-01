@@ -158,6 +158,31 @@ spec:
           - name: JAEGER_TRACEID_128BIT
             value: "true"
 ---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: kafka-consumer-v1
+  labels:
+    version: v1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: kafka-consumer
+        version: v1
+    spec:
+      containers:
+      - name: kafka-consumer
+        image: zhaohuabing/istio-opentracing-demo-kafka-consumer:1.0
+        env:
+          - name: JAEGER_ENDPOINT
+            value: "http://jaeger-collector.istio-system:14268/api/traces"
+          - name: JAEGER_PROPAGATION
+            value: "b3"
+          - name: JAEGER_TRACEID_128BIT
+            value: "true"
+---
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
