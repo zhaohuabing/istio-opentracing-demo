@@ -50,6 +50,19 @@ spec:
   selector:
     app: delivery
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: notification
+  labels:
+    app: notification
+spec:
+  ports:
+  - port: 8080
+    name: http
+  selector:
+    app: notification
+---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -149,6 +162,33 @@ spec:
     spec:
       containers:
       - name: delivery
+        image: zhaohuabing/istio-opentracing-demo:1.0
+        ports:
+        - containerPort: 8080
+        env:
+          - name: JAEGER_ENDPOINT
+            value: "http://jaeger-collector.istio-system:14268/api/traces"
+          - name: JAEGER_PROPAGATION
+            value: "b3"
+          - name: JAEGER_TRACEID_128BIT
+            value: "true"
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: notification-v1
+  labels:
+    version: v1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: notification
+        version: v1
+    spec:
+      containers:
+      - name: notification
         image: zhaohuabing/istio-opentracing-demo:1.0
         ports:
         - containerPort: 8080
