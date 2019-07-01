@@ -17,6 +17,9 @@ import org.springframework.kafka.core.KafkaAdmin;
 
 import io.opentracing.contrib.kafka.TracingConsumerInterceptor;
 
+/**
+ * Huabing Zhao
+ */
 @EnableKafka
 @Configuration
 public class KafkaConfig {
