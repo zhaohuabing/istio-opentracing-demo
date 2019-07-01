@@ -76,6 +76,8 @@ spec:
             value: "b3"
           - name: JAEGER_TRACEID_128BIT
             value: "true"
+          - name: KAFKA_BOOTSTRAP_SERVERS
+            value: "192.168.89.192:9092"
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -182,6 +184,8 @@ spec:
             value: "b3"
           - name: JAEGER_TRACEID_128BIT
             value: "true"
+          - name: KAFKA_BOOTSTRAP_SERVERS
+            value: "192.168.89.192:9092"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway

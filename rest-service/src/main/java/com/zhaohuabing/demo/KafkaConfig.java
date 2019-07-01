@@ -25,9 +25,6 @@ public class KafkaConfig {
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapAddress;
 
-    @Value(value = "${spring.kafka.consumer.group-id}")
-    private String groupId;
-
     @Bean
     public KafkaAdmin kafkaAdmin() {
         Map<String, Object> configs = new HashMap<>();
