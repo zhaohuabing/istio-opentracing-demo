@@ -8,6 +8,6 @@ public class MessageConsumer {
 
     @KafkaListener(topics = "eshop-topic")
     public void receive(String payload) {
-        System.out.println("Send out confirmation email");
+        System.out.println("*** receive kafka message ***");
     }
 }
