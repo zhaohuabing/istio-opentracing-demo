@@ -79,7 +79,7 @@ spec:
     spec:
       containers:
       - name: eshop
-        image: zhaohuabing/istio-opentracing-demo:1.0
+        image: zhaohuabing/istio-opentracing-demo:kafka-opentracing
         ports:
         - containerPort: 8080
         env:
@@ -108,7 +108,7 @@ spec:
     spec:
       containers:
       - name: inventory
-        image: zhaohuabing/istio-opentracing-demo:1.0
+        image: zhaohuabing/istio-opentracing-demo:kafka-opentracing
         ports:
         - containerPort: 8080
         env:
@@ -135,7 +135,7 @@ spec:
     spec:
       containers:
       - name: billing
-        image: zhaohuabing/istio-opentracing-demo:1.0
+        image: zhaohuabing/istio-opentracing-demo:kafka-opentracing
         ports:
         - containerPort: 8080
         env:
@@ -162,7 +162,7 @@ spec:
     spec:
       containers:
       - name: delivery
-        image: zhaohuabing/istio-opentracing-demo:1.0
+        image: zhaohuabing/istio-opentracing-demo:kafka-opentracing
         ports:
         - containerPort: 8080
         env:
@@ -189,7 +189,7 @@ spec:
     spec:
       containers:
       - name: notification
-        image: zhaohuabing/istio-opentracing-demo:1.0
+        image: zhaohuabing/istio-opentracing-demo:kafka-opentracing
         ports:
         - containerPort: 8080
         env:
@@ -216,7 +216,7 @@ spec:
     spec:
       containers:
       - name: kafka-consumer
-        image: zhaohuabing/istio-opentracing-demo-kafka-consumer:1.0
+        image: zhaohuabing/istio-opentracing-demo-kafka-consumer:kafka-opentracing
         env:
           - name: JAEGER_ENDPOINT
             value: "http://jaeger-collector.istio-system:14268/api/traces"

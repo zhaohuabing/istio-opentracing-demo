@@ -1,2 +1,2 @@
 mvn install
-sudo docker build ./ -t zhaohuabing/istio-opentracing-demo:1.0
+sudo docker build ./ -t zhaohuabing/istio-opentracing-demo:kafka-opentracing
