@@ -12,7 +12,7 @@ public class BankTransaction {
     @Traced
     public void transfer() {
         try {
-            Thread.sleep((long) (Math.random() * 10));
+            Thread.sleep((long) (Math.random() * 100));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

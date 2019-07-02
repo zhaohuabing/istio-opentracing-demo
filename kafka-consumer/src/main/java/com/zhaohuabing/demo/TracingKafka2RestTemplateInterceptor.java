@@ -40,7 +40,8 @@ public class TracingKafka2RestTemplateInterceptor implements ClientHttpRequestIn
     public TracingKafka2RestTemplateInterceptor(Headers headers) {
         this.headers = headers;
         this.tracer = GlobalTracer.get();
-        this.spanDecorators=        Collections.<RestTemplateSpanDecorator>singletonList(new RestTemplateSpanDecorator.StandardTags()));
+        this.spanDecorators = Collections
+                .<RestTemplateSpanDecorator>singletonList(new RestTemplateSpanDecorator.StandardTags());
     }
 
     @Override

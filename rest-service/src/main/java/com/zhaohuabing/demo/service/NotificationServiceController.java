@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class NotificationServiceController {
 
     @RequestMapping(value = "/sendEmail")
-    public String payment(@RequestHeader HttpHeaders headers) throws InterruptedException {
+    public String sendEmail(@RequestHeader HttpHeaders headers) throws InterruptedException {
         try {
             Thread.sleep((long) (Math.random() * 100));
         } catch (InterruptedException e) {
